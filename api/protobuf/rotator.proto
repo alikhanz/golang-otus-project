@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package rotator;
+
+option go_package = "github.com/alikhanz/golang-otus-project/pkg/pb";
+
+service Rotator {
+}
