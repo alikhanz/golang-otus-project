@@ -6,6 +6,6 @@ RUN apk add --update make && make build
 #RUN go build -o bin/app cmd/main.go
 
 FROM alpine:3.11
-COPY --from=builder /app/bin/app .
-RUN chmod +x ./app
-CMD ["./app"]
+COPY --from=builder /app /app
+RUN chmod +x /app/bin/*
+CMD ["./app/bin/app"]
