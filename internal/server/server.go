@@ -10,7 +10,7 @@ import (
 )
 
 type Config struct {
-	GrpcPort   int
+	GrpcPort int
 }
 
 type Server struct {
