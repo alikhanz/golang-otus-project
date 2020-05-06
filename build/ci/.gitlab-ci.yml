@@ -21,8 +21,8 @@ lint:
 test:
   stage: test
   script:
-    - cd /app/
-    - make test
+    - pwd
+    - ls -lha
 compile:
   stage: build
   script:
