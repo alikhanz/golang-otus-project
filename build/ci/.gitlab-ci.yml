@@ -21,6 +21,7 @@ lint:
       - gl-code-quality-report.json
   allow_failure: true
 test:
+  image: docker:19
   stage: test
   script:
     - docker build -t test-image -f build/package/Dockerfile --target builder .
