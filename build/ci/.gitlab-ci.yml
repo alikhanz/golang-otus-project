@@ -1,3 +1,5 @@
+image: docker:19
+
 stages:
   - test
   - build
@@ -21,13 +23,11 @@ lint:
       - gl-code-quality-report.json
   allow_failure: true
 test:
-  image: docker:19
   stage: test
   script:
     - docker build -t test-image -f build/package/Dockerfile --target builder .
     - docker run --rm test-image sh -c "make test"
 dockerize:
-  image: docker:19
   stage: build
   variables:
     IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
