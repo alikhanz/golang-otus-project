@@ -2,11 +2,12 @@ package server
 
 import (
 	"fmt"
+	"log"
+	"net"
+
 	"github.com/alikhanz/golang-otus-project/pkg/pb"
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc"
-	"log"
-	"net"
 )
 
 type Config struct {

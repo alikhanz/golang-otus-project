@@ -1,1 +1,1 @@
-package rotator
+package rotator_test
