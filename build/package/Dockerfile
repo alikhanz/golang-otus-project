@@ -1,4 +1,4 @@
-FROM golang:1.14-alpine AS builder
+FROM golang:1.14-stretch AS builder
 WORKDIR /app/
 ENV APP_ROOT /app
 COPY . .
