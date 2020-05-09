@@ -10,6 +10,8 @@ before_script:
 lint:
   image: registry.gitlab.com/gitlab-org/gitlab-build-images:golangci-lint-alpine
   stage: test
+  tags:
+    - docker
   script:
     # Use default .golangci.yml file from the image if one is not present in the project root.
     - '[ -e .golangci.yml ] || cp /golangci/.golangci.yml .'
@@ -24,11 +26,15 @@ lint:
   allow_failure: true
 test:
   stage: test
+  tags:
+    - docker
   script:
     - docker build -t test-image -f build/package/Dockerfile --target builder .
     - docker run --rm test-image sh -c "make test"
 dockerize:
   stage: build
+  tags:
+    - docker
   variables:
     IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   script:
