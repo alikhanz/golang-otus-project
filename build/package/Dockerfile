@@ -5,5 +5,5 @@ COPY . .
 
 FROM alpine:3.11
 COPY --from=builder /app /app
-RUN chmod +x /app/bin/*
+RUN chmod -R +x /app/bin/*
 CMD ["./app/bin/app"]
