@@ -2,7 +2,6 @@ FROM golang:1.14-stretch AS builder
 WORKDIR /app/
 ENV APP_ROOT /app
 COPY . .
-RUN apk add --update make && make build
 
 FROM alpine:3.11
 COPY --from=builder /app /app
