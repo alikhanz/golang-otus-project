@@ -1,6 +1,6 @@
 test:
 	go test ./... -v -race -count 100
-run:
+run-go:
 	go run cmd/main.go
 .PHONY: build
 build:
@@ -9,3 +9,5 @@ generate:
 	go generate cmd/main.go
 install:
 	go install
+run:
+	docker-compose -f deployments/docker-compose.yml up --build

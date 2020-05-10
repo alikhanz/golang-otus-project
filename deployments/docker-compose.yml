@@ -1,0 +1,25 @@
+version: '3.7'
+
+x-app-variables: &app-variables
+  APP_ENV: ${APP_ENV:-local}
+  APP_DEBUG: ${APP_DEBUG:-true}
+  DB_HOST: ${APP_DB_HOST:-app-db}
+  DB_DATABASE: ${APP_DB_DATABASE:-rotator}
+  DB_PASSWORD: ${APP_DB_ROOT_PASSWORD:-secret}
+  DB_USERNAME: ${APP_DB_USERNAME:-root}
+
+services:
+  app:
+    build:
+      context: ../
+      dockerfile: ./build/package/Dockerfile
+    depends_on:
+      - "app-db"
+    environment: *app-variables
+  app-db:
+    image: mysql:8
+    volumes:
+      - ./app-db/data:/var/lib/mysql:cached
+    environment:
+      - MYSQL_ROOT_PASSWORD=${APP_DB_ROOT_PASSWORD:-secret}
+      - MYSQL_DATABASE=${APP_DB_DATABASE:-rotator}
