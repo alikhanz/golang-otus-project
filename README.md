@@ -20,6 +20,24 @@ make build
 make generate
 ```
 
+Конфигурация:
+Возможная конфигурация через `.env` файл, либо переменными окружения системы (`.env` приоритетнее)
+
+Список переменных:
+
+```shell script
+AMQP_HOST=localhost
+AMQP_PORT=5672
+AMQP_LOGIN=test
+AMQP_PASSWORD=test
+AMQP_VHOST=/
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=test
+DB_USER=test
+DB_PASSWORD=test
+```
+
 # ТЗ на сервис "Ротация баннеров"
 
 ## Общее описание

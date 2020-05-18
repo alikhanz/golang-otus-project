@@ -1,12 +1,18 @@
 version: '3.7'
 
 x-app-variables: &app-variables
-  APP_ENV: ${APP_ENV:-local}
+  APP_ENV: ${APP_ENV:-dev}
   APP_DEBUG: ${APP_DEBUG:-true}
-  DB_HOST: ${APP_DB_HOST:-app-db}
+  APP_GRPC_PORT: ${APP_GRPC_PORT:-6565}
+  DB_HOST: ${APP_DB_HOST:-db}
   DB_DATABASE: ${APP_DB_DATABASE:-rotator}
   DB_PASSWORD: ${APP_DB_ROOT_PASSWORD:-secret}
   DB_USERNAME: ${APP_DB_USERNAME:-root}
+  AMQP_HOST: ${AMQP_HOST:-rabbitmq}
+  AMQP_PORT: ${AMQP_PORT:-5672}
+  AMQP_LOGIN: ${AMQP_LOGIN}
+  AMQP_PASSWORD: ${AMQP_PASSWORD}
+  AMQP_VHOST: ${AMQP_VHOST:-/}
 
 services:
   app:
@@ -14,12 +20,29 @@ services:
       context: ../
       dockerfile: ./build/package/Dockerfile
     depends_on:
-      - "app-db"
+      - "db"
+    ports:
+      - "${APP_GRPC_PORT-6565}:${APP_GRPC_PORT-6565}"
     environment: *app-variables
-  app-db:
-    image: mysql:8
+    command: ["wait-for", "-t", "60", "db:3306", "--", "wait-for", "-t", "60", "rabbitmq:5672", "--", "/app/bin/app"]
+    networks:
+      - internal
+  db:
+    image: mysql:5.7
     volumes:
-      - ./app-db/data:/var/lib/mysql:cached
+      - ./db/data:/var/lib/mysql:cached
     environment:
       - MYSQL_ROOT_PASSWORD=${APP_DB_ROOT_PASSWORD:-secret}
       - MYSQL_DATABASE=${APP_DB_DATABASE:-rotator}
+    networks:
+      - internal
+  rabbitmq:
+    image: rabbitmq:3.8-alpine
+    volumes:
+      - ./rabbitmq/data:/var/lib/rabbitmq:cached
+      - ./rabbitmq/logs:/var/log/rabbitmq:cached
+    networks:
+      - internal
+networks:
+  internal:
+    external: false

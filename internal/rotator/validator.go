@@ -1,4 +1,4 @@
-package server
+package rotator
 
 type Validator struct {
 }

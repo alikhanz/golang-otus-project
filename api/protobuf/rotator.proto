@@ -5,4 +5,45 @@ package rotator;
 option go_package = "github.com/alikhanz/golang-otus-project/pkg/pb";
 
 service Rotator {
+    rpc SelectBanner(SelectBannerRequest) returns (SelectBannerResponse);
+    rpc AddBannerToSlot (AddBannerToSlotRequest) returns (AddBannerToSlotResponse);
+    rpc RemoveBannerFromSlot (RemoveBannerFromSlotRequest) returns (RemoveBannerFromSlotResponse);
+}
+
+message SelectBannerRequest {
+    int32 slot_id = 1;
+    int32 sdg_id = 2;
+}
+
+message SelectBannerResponse {
+    int32 banner_id = 1;
+}
+
+message AddBannerToSlotRequest {
+    int32 banner_id = 1;
+    int32 slot_id = 2;
+}
+
+message AddBannerToSlotResponse {
+}
+
+message RemoveBannerFromSlotRequest {
+    int32 banner_id = 1;
+    int32 slot_id = 2;
+}
+
+message RemoveBannerFromSlotResponse {
+}
+
+message AddBanner {
+    string description = 1;
+}
+
+message AddSlot {
+    string description = 1;
+}
+
+// Социально-демографическая группа
+message AddSdg {
+    string description = 1;
 }
