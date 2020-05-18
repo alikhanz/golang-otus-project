@@ -3,7 +3,6 @@ package rotator
 import (
 	"context"
 
-	"github.com/rs/zerolog/log"
 	"github.com/streadway/amqp"
 	"golang.org/x/sync/errgroup"
 )
@@ -34,6 +33,8 @@ func (r *Rotator) Run(ctx context.Context) error {
 	eg, ctx := errgroup.WithContext(ctx)
 
 	eg.Go(r.connectRmq)
+
+	return eg.Wait()
 }
 
 func (r *Rotator) connectRmq() error {
