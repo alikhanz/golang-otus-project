@@ -9,8 +9,8 @@ import (
 	"syscall"
 
 	"github.com/alikhanz/golang-otus-project/internal/resources"
+	rotator2 "github.com/alikhanz/golang-otus-project/internal/rotator"
 	"github.com/alikhanz/golang-otus-project/internal/server"
-	"github.com/alikhanz/golang-otus-project/pkg/rotator"
 	"github.com/rs/zerolog/log"
 )
 
@@ -45,7 +45,7 @@ func osContext(ctx context.Context, signals ...os.Signal) context.Context {
 	return ctx
 }
 
-func initServer(ctx context.Context, r *rotator.Rotator, res *resources.Resources) {
+func initServer(ctx context.Context, r *rotator2.Rotator, res *resources.Resources) {
 	s := server.NewServer(
 		r,
 		res,
@@ -53,8 +53,8 @@ func initServer(ctx context.Context, r *rotator.Rotator, res *resources.Resource
 	log.Fatal().Err(s.Run(ctx))
 }
 
-func createRotator(res *resources.Resources) *rotator.Rotator {
-	return rotator.NewRotator(rotator.Config{
+func createRotator(res *resources.Resources) *rotator2.Rotator {
+	return rotator2.NewRotator(rotator2.Config{
 		AmqpHost:     res.Config.AmqpHost,
 		AmqpPort:     res.Config.AmqpPort,
 		AmqpLogin:    res.Config.AmqpLogin,

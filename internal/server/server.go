@@ -9,7 +9,6 @@ import (
 	"github.com/alikhanz/golang-otus-project/internal/resources"
 	i_rotator "github.com/alikhanz/golang-otus-project/internal/rotator"
 	"github.com/alikhanz/golang-otus-project/pkg/pb"
-	p_rotator "github.com/alikhanz/golang-otus-project/pkg/rotator"
 	"github.com/rs/zerolog/log"
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc"
@@ -22,10 +21,10 @@ type Config struct {
 type Server struct {
 	Resources	  *resources.Resources
 	rotatorServer *i_rotator.RotatorServer
-	rotator       *p_rotator.Rotator
+	rotator       *i_rotator.Rotator
 }
 
-func NewServer(r *p_rotator.Rotator, res *resources.Resources) *Server {
+func NewServer(r *i_rotator.Rotator, res *resources.Resources) *Server {
 	s := &Server{
 		Resources: res,
 		rotator: r,
