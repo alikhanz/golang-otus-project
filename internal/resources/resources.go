@@ -9,15 +9,16 @@ import (
 )
 
 type Resources struct {
-	Db     *gorm.DB
+	DB     *gorm.DB
 	Config *config.Config
-	Amqp   *amqp.Connection
+	AMQP   *amqp.Connection
 }
 
 func Get(ctx context.Context) *Resources {
 	r := &Resources{}
 	r.initConfig()
-	r.initDb(ctx)
+	r.initDB(ctx)
+	r.initAMQP(ctx)
 
 	return r
 }

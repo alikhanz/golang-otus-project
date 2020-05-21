@@ -12,13 +12,11 @@ import (
 )
 
 type Server struct {
-	validator *Validator
 	rotator *Rotator
 }
 
 func NewRotatorServer(rotator *Rotator) *Server {
-	v := NewValidator(rotator)
-	return &Server{validator: v, rotator: rotator}
+	return &Server{rotator: rotator}
 }
 
 func (r Server) HitBanner(ctx context.Context, request *pb.HitBannerRequest) (*pb.HitBannerResponse, error) {

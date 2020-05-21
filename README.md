@@ -6,7 +6,13 @@
 make unit-test
 ```
 
-Запуск интеграционных тестов:
+Запуск интеграционных тестов вместе с окружением:
+
+```shell script
+make run-integration-test
+```
+
+Запуск интеграционных тестов (используется внутри поднятного окружения, тут - docker-compose):
 
 ```shell script
 make integration-test

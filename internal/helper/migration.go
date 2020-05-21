@@ -6,5 +6,5 @@ import (
 )
 
 func Migrate(res *resources.Resources) {
-	res.Db.AutoMigrate(&model.Banner{}, &model.Sdg{}, &model.Slot{}, &model.Stat{})
+	res.DB.AutoMigrate(&model.Banner{}, &model.Sdg{}, &model.Slot{}, &model.Stat{})
 }

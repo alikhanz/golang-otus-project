@@ -52,11 +52,11 @@ func prepareDb(res *resources.Resources) {
 		&model.Stat{},
 	}
 
-	res.Db.Exec("TRUNCATE TABLE banner_slots")
+	res.DB.Exec("TRUNCATE TABLE banner_slots")
 
 	for _, m := range models {
-		table := res.Db.NewScope(m).TableName()
-		res.Db.Exec("TRUNCATE TABLE " + table)
+		table := res.DB.NewScope(m).TableName()
+		res.DB.Exec("TRUNCATE TABLE " + table)
 	}
 
 }
@@ -76,17 +76,17 @@ func seed(res *resources.Resources) {
 	sdg1 = &model.Sdg{Description: "Бабушки"}
 	sdg2 = &model.Sdg{Description: "Дедушки"}
 
-	res.Db.Create(slot1)
-	res.Db.Create(slot2)
-	res.Db.Create(banner1)
-	res.Db.Create(banner2)
-	res.Db.Create(sdg1)
-	res.Db.Create(sdg2)
+	res.DB.Create(slot1)
+	res.DB.Create(slot2)
+	res.DB.Create(banner1)
+	res.DB.Create(banner2)
+	res.DB.Create(sdg1)
+	res.DB.Create(sdg2)
 
-	res.Db.Model(banner1).Association("Slots").Append(slot1)
-	res.Db.Model(banner1).Association("Slots").Append(slot2)
+	res.DB.Model(banner1).Association("Slots").Append(slot1)
+	res.DB.Model(banner1).Association("Slots").Append(slot2)
 
-	res.Db.Model(banner2).Association("Slots").Append(slot1)
+	res.DB.Model(banner2).Association("Slots").Append(slot1)
 }
 
 func TestBannerSelection(t *testing.T) {

@@ -15,7 +15,7 @@ import (
 )
 
 type Server struct {
-	Resources	  *resources.Resources
+	Resources     *resources.Resources
 	rotatorServer *rotator.Server
 }
 
@@ -53,7 +53,7 @@ func (s *Server) grpcInit(ctx context.Context) error {
 			log.Info().Msg("The grpc-server was successfully stopped")
 		}()
 		<-ctx.Done()
-		time.Sleep(time.Second*10)
+		time.Sleep(time.Second * 10)
 		grpcServer.Stop()
 		log.Info().Msg("The grpc-server was successfully stopped")
 	}()

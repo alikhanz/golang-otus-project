@@ -20,7 +20,7 @@ func UCB1(arms Arms) int {
 	var resultIndex int
 
 	for i, arm := range arms {
-		res = (arm.AvgIncome()) + math.Sqrt((2 * math.Log(float64(totalCount)))/float64(arm.Count))
+		res = (arm.AvgIncome()) + math.Sqrt((2*math.Log(float64(totalCount)))/float64(arm.Count))
 
 		if res > maxRes {
 			maxRes = res

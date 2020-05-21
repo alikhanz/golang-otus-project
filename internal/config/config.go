@@ -13,31 +13,31 @@ func init() {
 
 type Config struct {
 	GrpcPort     int
-	AmqpHost     string
-	AmqpPort     int
-	AmqpLogin    string
-	AmqpPassword string
-	AmqpVhost    string
-	DbHost       string
-	DbPort       int
-	DbName       string
-	DbUser       string
-	DbPassword   string
+	AMQPHost     string
+	AMQPPort     int
+	AMQPLogin    string
+	AMQPPassword string
+	AMQPVhost    string
+	DBHost       string
+	DBPort       int
+	DBName       string
+	DBUser       string
+	DBPassword   string
 }
 
 func New() *Config {
 	return &Config{
 		GrpcPort:     intVal("GRPC_PORT"),
-		AmqpHost:     os.Getenv("AMQP_HOST"),
-		AmqpPort:     intVal("AMQP_PORT"),
-		AmqpLogin:    os.Getenv("AMQP_LOGIN"),
-		AmqpPassword: os.Getenv("AMQP_PASSWORD"),
-		AmqpVhost:    os.Getenv("AMQP_VHOST"),
-		DbHost:       os.Getenv("DB_HOST"),
-		DbPort:       intVal("DB_PORT"),
-		DbName:       os.Getenv("DB_DATABASE"),
-		DbUser:       os.Getenv("DB_USERNAME"),
-		DbPassword:   os.Getenv("DB_PASSWORD"),
+		AMQPHost:     os.Getenv("AMQP_HOST"),
+		AMQPPort:     intVal("AMQP_PORT"),
+		AMQPLogin:    os.Getenv("AMQP_LOGIN"),
+		AMQPPassword: os.Getenv("AMQP_PASSWORD"),
+		AMQPVhost:    os.Getenv("AMQP_VHOST"),
+		DBHost:       os.Getenv("DB_HOST"),
+		DBPort:       intVal("DB_PORT"),
+		DBName:       os.Getenv("DB_DATABASE"),
+		DBUser:       os.Getenv("DB_USERNAME"),
+		DBPassword:   os.Getenv("DB_PASSWORD"),
 	}
 }
 

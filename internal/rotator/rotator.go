@@ -15,31 +15,31 @@ func NewRotator(res *resources.Resources) *Rotator {
 	return &Rotator{res: res}
 }
 
-func (r *Rotator) AddBannerToSlot(bannerId, slotId uint) error {
-	banner, slot, err := r.findBannerAndSlot(bannerId, slotId)
+func (r *Rotator) AddBannerToSlot(bannerID, slotID uint) error {
+	banner, slot, err := r.findBannerAndSlot(bannerID, slotID)
 
 	if err != nil {
 		return err
 	}
 
-	r.res.Db.Model(banner).Association("Slots").Append(slot)
+	r.res.DB.Model(banner).Association("Slots").Append(slot)
 
 	return nil
 }
 
-func (r *Rotator) HitBanner(bannerId, slotId, sdgId uint) error {
-	banner, err := r.findBanner(bannerId)
+func (r *Rotator) HitBanner(bannerID, slotID, sdgID uint) error {
+	banner, err := r.findBanner(bannerID)
 
 	if err != nil {
 		return err
 	}
 
-	stat, err := r.findOrCreateBannerStat(banner.ID, slotId, sdgId)
+	stat, err := r.findOrCreateBannerStat(banner.ID, slotID, sdgID)
 	if err != nil {
 		return err
 	}
 
-	res := r.res.Db.Model(stat).
+	res := r.res.DB.Model(stat).
 		UpdateColumn("hit_count", gorm.Expr("hit_count + ?", 1))
 
 	if res.Error != nil {
@@ -49,19 +49,19 @@ func (r *Rotator) HitBanner(bannerId, slotId, sdgId uint) error {
 	return nil
 }
 
-func (r *Rotator) SelectBanner(slotId, sdgId uint) (*model.Banner, error) {
-	slot, err := r.findSlot(slotId)
+func (r *Rotator) SelectBanner(slotID, sdgID uint) (*model.Banner, error) {
+	slot, err := r.findSlot(slotID)
 	if err != nil {
 		return nil, err
 	}
 
-	r.res.Db.Model(slot).Association("Banners").Find(&slot.Banners)
+	r.res.DB.Model(slot).Association("Banners").Find(&slot.Banners)
 
 	if len(slot.Banners) == 0 {
 		return nil, &SlotHasNoBannersError{ID: slot.ID}
 	}
 
-	sdg, err := r.findSdg(sdgId)
+	sdg, err := r.findSdg(sdgID)
 	if err != nil {
 		return nil, err
 	}
@@ -87,7 +87,7 @@ func (r *Rotator) SelectBanner(slotId, sdgId uint) (*model.Banner, error) {
 
 	i := ucb1.UCB1(arms)
 	selectedBanner := slot.Banners[i]
-	res := r.res.Db.Model(bannerStat[selectedBanner.ID]).
+	res := r.res.DB.Model(bannerStat[selectedBanner.ID]).
 		UpdateColumn("show_count", gorm.Expr("show_count + ?", 1))
 
 	if res.Error != nil {
@@ -97,13 +97,13 @@ func (r *Rotator) SelectBanner(slotId, sdgId uint) (*model.Banner, error) {
 	return slot.Banners[i], nil
 }
 
-func (r *Rotator) RemoveBannerFromSlot(bannerId, slotId uint) error {
-	banner, slot, err := r.findBannerAndSlot(bannerId, slotId)
+func (r *Rotator) RemoveBannerFromSlot(bannerID, slotID uint) error {
+	banner, slot, err := r.findBannerAndSlot(bannerID, slotID)
 	if err != nil {
 		return err
 	}
 
-	res := r.res.Db.Model(banner).Association("Slots").Delete(slot)
+	res := r.res.DB.Model(banner).Association("Slots").Delete(slot)
 	if res.Error != nil {
 		return UnknownError{"Removing banner from slot failed"}
 	}
@@ -111,14 +111,14 @@ func (r *Rotator) RemoveBannerFromSlot(bannerId, slotId uint) error {
 	return nil
 }
 
-func (r *Rotator) findBannerAndSlot(bannerId, slotId uint) (*model.Banner, *model.Slot, error) {
-	banner, err := r.findBanner(bannerId)
+func (r *Rotator) findBannerAndSlot(bannerID, slotID uint) (*model.Banner, *model.Slot, error) {
+	banner, err := r.findBanner(bannerID)
 
 	if err != nil {
 		return nil, nil, err
 	}
 
-	slot, err := r.findSlot(slotId)
+	slot, err := r.findSlot(slotID)
 
 	if err != nil {
 		return nil, nil, err
@@ -127,10 +127,10 @@ func (r *Rotator) findBannerAndSlot(bannerId, slotId uint) (*model.Banner, *mode
 	return banner, slot, nil
 }
 
-func (r *Rotator) findBanner(bannerId uint) (*model.Banner, error) {
+func (r *Rotator) findBanner(bannerID uint) (*model.Banner, error) {
 	banner := &model.Banner{}
 
-	result := r.res.Db.First(banner, bannerId)
+	result := r.res.DB.First(banner, bannerID)
 
 	if result.RecordNotFound() {
 		return nil, &NotFoundError{"Banner"}
@@ -143,10 +143,10 @@ func (r *Rotator) findBanner(bannerId uint) (*model.Banner, error) {
 	return banner, nil
 }
 
-func (r *Rotator) findSlot(slotId uint) (*model.Slot, error) {
+func (r *Rotator) findSlot(slotID uint) (*model.Slot, error) {
 	slot := &model.Slot{}
 
-	result := r.res.Db.First(slot, slotId)
+	result := r.res.DB.First(slot, slotID)
 
 	if result.RecordNotFound() {
 		return nil, &NotFoundError{"Slot"}
@@ -159,10 +159,10 @@ func (r *Rotator) findSlot(slotId uint) (*model.Slot, error) {
 	return slot, nil
 }
 
-func (r *Rotator) findSdg(sdgId uint) (*model.Sdg, error) {
+func (r *Rotator) findSdg(sdgID uint) (*model.Sdg, error) {
 	sdg := &model.Sdg{}
 
-	result := r.res.Db.First(sdg, sdgId)
+	result := r.res.DB.First(sdg, sdgID)
 
 	if result.RecordNotFound() {
 		return nil, &NotFoundError{"Sdg"}
@@ -175,9 +175,9 @@ func (r *Rotator) findSdg(sdgId uint) (*model.Sdg, error) {
 	return sdg, nil
 }
 
-func (r *Rotator) findOrCreateBannerStat(bannerId, slotId, sdgId uint) (*model.Stat, error) {
+func (r *Rotator) findOrCreateBannerStat(bannerID, slotID, sdgID uint) (*model.Stat, error) {
 	stat := &model.Stat{}
-	result := r.res.Db.FirstOrCreate(stat, &model.Stat{BannerId: bannerId, SlotId: slotId, SdgId: sdgId})
+	result := r.res.DB.FirstOrCreate(stat, &model.Stat{BannerID: bannerID, SlotID: slotID, SdgID: sdgID})
 
 	if result.Error != nil {
 		return nil, UnknownError{"Stats search failed"}

@@ -9,12 +9,12 @@ import (
 	"github.com/alikhanz/golang-otus-project/internal/resources"
 	"github.com/alikhanz/golang-otus-project/internal/rotator"
 	"github.com/alikhanz/golang-otus-project/internal/server"
-	"github.com/alikhanz/golang-otus-project/pkg/os_context"
+	"github.com/alikhanz/golang-otus-project/pkg/oscontext"
 	"github.com/rs/zerolog/log"
 )
 
 func main() {
-	ctx := os_context.Context(context.Background())
+	ctx := oscontext.Context(context.Background())
 	res := resources.Get(ctx)
 
 	helper.Migrate(res)
@@ -22,7 +22,6 @@ func main() {
 	rr := createRotator(res)
 	initServer(ctx, rr, res)
 }
-
 
 func initServer(ctx context.Context, r *rotator.Rotator, res *resources.Resources) {
 	s := server.NewServer(

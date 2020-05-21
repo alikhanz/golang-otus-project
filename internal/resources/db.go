@@ -3,33 +3,34 @@ package resources
 import (
 	"context"
 
+	_ "github.com/jinzhu/gorm/dialects/mysql" // for mysql connect.
+
 	"github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/rs/zerolog/log"
 )
 
-func (r *Resources) initDb(ctx context.Context) {
+func (r *Resources) initDB(ctx context.Context) {
 	p := make(map[string]string)
 	p["charset"] = "utf8mb4"
 
 	config := mysql.NewConfig()
-	config.User = r.Config.DbUser
-	config.Passwd = r.Config.DbPassword
+	config.User = r.Config.DBUser
+	config.Passwd = r.Config.DBPassword
 	config.Net = "tcp"
-	config.Addr = r.Config.DbHost
-	config.DBName = r.Config.DbName
+	config.Addr = r.Config.DBHost
+	config.DBName = r.Config.DBName
 	config.Collation = "utf8mb4_unicode_ci"
 	config.Params = p
 	config.ParseTime = true
 
 	db, err := gorm.Open("mysql", config.FormatDSN())
 	if err != nil {
-		log.Fatal().Err(err).Msg("Db connection failed")
+		log.Fatal().Err(err).Msg("DB connection failed")
 	}
 	db = db.Set("gorm:table_options", "ENGINE=InnoDB CHARSET=utf8")
 
-	r.Db = db
+	r.DB = db
 
 	go func() {
 		<-ctx.Done()

@@ -1,4 +1,4 @@
-package os_context
+package oscontext
 
 import (
 	"context"

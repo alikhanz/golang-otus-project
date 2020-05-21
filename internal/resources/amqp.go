@@ -7,14 +7,14 @@ import (
 	"github.com/streadway/amqp"
 )
 
-func (r *Resources) initAmqp(ctx context.Context) {
+func (r *Resources) initAMQP(ctx context.Context) {
 	uri := amqp.URI{
 		Scheme:   "amqp",
-		Host:     r.Config.AmqpHost,
-		Port:     r.Config.AmqpPort,
-		Username: r.Config.AmqpLogin,
-		Password: r.Config.AmqpPassword,
-		Vhost:    r.Config.AmqpVhost,
+		Host:     r.Config.AMQPHost,
+		Port:     r.Config.AMQPPort,
+		Username: r.Config.AMQPLogin,
+		Password: r.Config.AMQPPassword,
+		Vhost:    r.Config.AMQPVhost,
 	}
 
 	conn, err := amqp.Dial(uri.String())
@@ -22,7 +22,7 @@ func (r *Resources) initAmqp(ctx context.Context) {
 		log.Fatal().Err(err).Msg("Failed connect to amqp")
 	}
 
-	r.Amqp = conn
+	r.AMQP = conn
 
 	go func() {
 		<-ctx.Done()

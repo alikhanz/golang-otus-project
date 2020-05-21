@@ -40,12 +40,12 @@ func TestUCB1(t *testing.T) {
 		arms[armIndex].Count++
 
 		switch armIndex {
-			case 0:
-				arms[armIndex].Reward += rand.Float64() + 0.5
-				break
-			default:
-				arms[armIndex].Reward += rand.Float64()
-				break
+		case 0:
+			arms[armIndex].Reward += rand.Float64() + 0.5
+			break
+		default:
+			arms[armIndex].Reward += rand.Float64()
+			break
 		}
 	}
 
