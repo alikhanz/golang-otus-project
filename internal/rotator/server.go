@@ -48,7 +48,7 @@ func (r Server) AddBannerToSlot(
 	ctx context.Context,
 	request *pb.AddBannerToSlotRequest,
 ) (*pb.AddBannerToSlotResponse, error) {
-	err := r.rotator.AddBannerToSlot(uint(request.BannerId), uint(request.BannerId))
+	err := r.rotator.AddBannerToSlot(uint(request.BannerId), uint(request.SlotId))
 	err = r.handleErr(err)
 
 	if err != nil {
@@ -62,7 +62,7 @@ func (r Server) RemoveBannerFromSlot(
 	ctx context.Context,
 	request *pb.RemoveBannerFromSlotRequest,
 ) (*pb.RemoveBannerFromSlotResponse, error) {
-	err := r.rotator.RemoveBannerFromSlot(uint(request.BannerId), uint(request.BannerId))
+	err := r.rotator.RemoveBannerFromSlot(uint(request.BannerId), uint(request.SlotId))
 	err = r.handleErr(err)
 
 	if err != nil {
