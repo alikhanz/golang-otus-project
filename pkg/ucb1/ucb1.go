@@ -20,9 +20,8 @@ func UCB1(arms Arms) int {
 	var resultIndex int
 
 	for i, arm := range arms {
-		//res = arm.AvgIncome() + math.Log(float64(totalCount))/ (2 * float64(arm.Count))
 		res = (arm.AvgIncome()) + math.Sqrt((2 * math.Log(float64(totalCount)))/float64(arm.Count))
-//fmt.Println(fmt.Sprintf("Index: %d, AvgIncome: %f, Result: %f, Count: %d, Reward: %f, TotalCount: %d", i, arm.AvgIncome(), res, arm.Count, arm.Reward, totalCount))
+
 		if res > maxRes {
 			maxRes = res
 			resultIndex = i

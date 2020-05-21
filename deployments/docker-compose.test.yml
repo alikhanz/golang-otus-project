@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      target: builder
+    command: ["wait-for", "-t", "60", "db:3306", "--", "wait-for", "-t", "60", "rabbitmq:5672", "--", "make", "integration-test"]
+  db:
+    volumes:
+      - ./db-test/data:/var/lib/mysql:cached

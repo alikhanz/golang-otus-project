@@ -3,11 +3,12 @@ module github.com/alikhanz/golang-otus-project
 go 1.14
 
 require (
-	github.com/go-sql-driver/mysql v1.5.0 // indirect
+	github.com/go-sql-driver/mysql v1.5.0
 	github.com/golang/protobuf v1.4.0
 	github.com/jinzhu/gorm v1.9.12
 	github.com/joho/godotenv v1.3.0
 	github.com/lib/pq v1.3.0 // indirect
+	github.com/pkg/errors v0.8.1
 	github.com/rs/zerolog v1.18.0
 	github.com/streadway/amqp v0.0.0-20200108173154-1c71cc93ed71
 	github.com/stretchr/testify v1.5.1

@@ -4,6 +4,6 @@ import "github.com/jinzhu/gorm"
 
 type Slot struct {
 	gorm.Model
-	Id          int
 	Description string
+	Banners		[]*Banner `gorm:"many2many:banner_slots;"`
 }

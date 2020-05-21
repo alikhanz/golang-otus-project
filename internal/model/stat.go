@@ -1,12 +1,16 @@
 package model
 
-import "github.com/jinzhu/gorm"
+import "time"
 
 type Stat struct {
-	gorm.Model
-	ShowCount int64
-	HitCount  int64
-	BannerId  int
-	SlotId    int
-	SdgId	  int
+	ShowCount int64 `gorm:"DEFAULT:0"`
+	HitCount  int64 `gorm:"DEFAULT:0"`
+	BannerId  uint  `gorm:"primary_key;auto_increment:false"`
+	SlotId    uint  `gorm:"primary_key;auto_increment:false"`
+	SdgId     uint  `gorm:"primary_key;auto_increment:false"`
+	Banner    Banner
+	Slot      Slot
+	Sdg       Sdg
+	CreatedAt time.Time
+	DeletedAt *time.Time `sql:"index"`
 }

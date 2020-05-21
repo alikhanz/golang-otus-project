@@ -1,13 +1,12 @@
 version: '3.7'
 
 x-app-variables: &app-variables
-  APP_ENV: ${APP_ENV:-dev}
-  APP_DEBUG: ${APP_DEBUG:-true}
-  APP_GRPC_PORT: ${APP_GRPC_PORT:-6565}
-  DB_HOST: ${APP_DB_HOST:-db}
-  DB_DATABASE: ${APP_DB_DATABASE:-rotator}
-  DB_PASSWORD: ${APP_DB_ROOT_PASSWORD:-secret}
-  DB_USERNAME: ${APP_DB_USERNAME:-root}
+  GRPC_PORT: ${GRPC_PORT:-6565}
+  DB_HOST: ${DB_HOST:-db}
+  DB_PORT: ${DB_PORT:-3306}
+  DB_DATABASE: ${DB_DATABASE:-rotator}
+  DB_PASSWORD: ${DB_PASSWORD:-secret}
+  DB_USERNAME: ${DB_USERNAME:-root}
   AMQP_HOST: ${AMQP_HOST:-rabbitmq}
   AMQP_PORT: ${AMQP_PORT:-5672}
   AMQP_LOGIN: ${AMQP_LOGIN}

@@ -29,19 +29,120 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
+type HitBannerRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	BannerId uint32 `protobuf:"varint,1,opt,name=banner_id,json=bannerId,proto3" json:"banner_id,omitempty"`
+	SlotId   uint32 `protobuf:"varint,2,opt,name=slot_id,json=slotId,proto3" json:"slot_id,omitempty"`
+	SdgId    uint32 `protobuf:"varint,3,opt,name=sdg_id,json=sdgId,proto3" json:"sdg_id,omitempty"`
+}
+
+func (x *HitBannerRequest) Reset() {
+	*x = HitBannerRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_rotator_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *HitBannerRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HitBannerRequest) ProtoMessage() {}
+
+func (x *HitBannerRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_rotator_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HitBannerRequest.ProtoReflect.Descriptor instead.
+func (*HitBannerRequest) Descriptor() ([]byte, []int) {
+	return file_rotator_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *HitBannerRequest) GetBannerId() uint32 {
+	if x != nil {
+		return x.BannerId
+	}
+	return 0
+}
+
+func (x *HitBannerRequest) GetSlotId() uint32 {
+	if x != nil {
+		return x.SlotId
+	}
+	return 0
+}
+
+func (x *HitBannerRequest) GetSdgId() uint32 {
+	if x != nil {
+		return x.SdgId
+	}
+	return 0
+}
+
+type HitBannerResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *HitBannerResponse) Reset() {
+	*x = HitBannerResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_rotator_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *HitBannerResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HitBannerResponse) ProtoMessage() {}
+
+func (x *HitBannerResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_rotator_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HitBannerResponse.ProtoReflect.Descriptor instead.
+func (*HitBannerResponse) Descriptor() ([]byte, []int) {
+	return file_rotator_proto_rawDescGZIP(), []int{1}
+}
+
 type SelectBannerRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	SlotId int32 `protobuf:"varint,1,opt,name=slot_id,json=slotId,proto3" json:"slot_id,omitempty"`
-	SdgId  int32 `protobuf:"varint,2,opt,name=sdg_id,json=sdgId,proto3" json:"sdg_id,omitempty"`
+	SlotId uint32 `protobuf:"varint,1,opt,name=slot_id,json=slotId,proto3" json:"slot_id,omitempty"`
+	SdgId  uint32 `protobuf:"varint,2,opt,name=sdg_id,json=sdgId,proto3" json:"sdg_id,omitempty"`
 }
 
 func (x *SelectBannerRequest) Reset() {
 	*x = SelectBannerRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rotator_proto_msgTypes[0]
+		mi := &file_rotator_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -54,7 +155,7 @@ func (x *SelectBannerRequest) String() string {
 func (*SelectBannerRequest) ProtoMessage() {}
 
 func (x *SelectBannerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_rotator_proto_msgTypes[0]
+	mi := &file_rotator_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -67,17 +168,17 @@ func (x *SelectBannerRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SelectBannerRequest.ProtoReflect.Descriptor instead.
 func (*SelectBannerRequest) Descriptor() ([]byte, []int) {
-	return file_rotator_proto_rawDescGZIP(), []int{0}
+	return file_rotator_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *SelectBannerRequest) GetSlotId() int32 {
+func (x *SelectBannerRequest) GetSlotId() uint32 {
 	if x != nil {
 		return x.SlotId
 	}
 	return 0
 }
 
-func (x *SelectBannerRequest) GetSdgId() int32 {
+func (x *SelectBannerRequest) GetSdgId() uint32 {
 	if x != nil {
 		return x.SdgId
 	}
@@ -89,13 +190,13 @@ type SelectBannerResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	BannerId int32 `protobuf:"varint,2,opt,name=banner_id,json=bannerId,proto3" json:"banner_id,omitempty"`
+	BannerId uint32 `protobuf:"varint,1,opt,name=banner_id,json=bannerId,proto3" json:"banner_id,omitempty"`
 }
 
 func (x *SelectBannerResponse) Reset() {
 	*x = SelectBannerResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rotator_proto_msgTypes[1]
+		mi := &file_rotator_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -108,7 +209,7 @@ func (x *SelectBannerResponse) String() string {
 func (*SelectBannerResponse) ProtoMessage() {}
 
 func (x *SelectBannerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_rotator_proto_msgTypes[1]
+	mi := &file_rotator_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -121,10 +222,10 @@ func (x *SelectBannerResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SelectBannerResponse.ProtoReflect.Descriptor instead.
 func (*SelectBannerResponse) Descriptor() ([]byte, []int) {
-	return file_rotator_proto_rawDescGZIP(), []int{1}
+	return file_rotator_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *SelectBannerResponse) GetBannerId() int32 {
+func (x *SelectBannerResponse) GetBannerId() uint32 {
 	if x != nil {
 		return x.BannerId
 	}
@@ -136,14 +237,14 @@ type AddBannerToSlotRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	BannerId int32 `protobuf:"varint,1,opt,name=banner_id,json=bannerId,proto3" json:"banner_id,omitempty"`
-	SlotId   int32 `protobuf:"varint,2,opt,name=slot_id,json=slotId,proto3" json:"slot_id,omitempty"`
+	BannerId uint32 `protobuf:"varint,1,opt,name=banner_id,json=bannerId,proto3" json:"banner_id,omitempty"`
+	SlotId   uint32 `protobuf:"varint,2,opt,name=slot_id,json=slotId,proto3" json:"slot_id,omitempty"`
 }
 
 func (x *AddBannerToSlotRequest) Reset() {
 	*x = AddBannerToSlotRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rotator_proto_msgTypes[2]
+		mi := &file_rotator_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -156,7 +257,7 @@ func (x *AddBannerToSlotRequest) String() string {
 func (*AddBannerToSlotRequest) ProtoMessage() {}
 
 func (x *AddBannerToSlotRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_rotator_proto_msgTypes[2]
+	mi := &file_rotator_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -169,17 +270,17 @@ func (x *AddBannerToSlotRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddBannerToSlotRequest.ProtoReflect.Descriptor instead.
 func (*AddBannerToSlotRequest) Descriptor() ([]byte, []int) {
-	return file_rotator_proto_rawDescGZIP(), []int{2}
+	return file_rotator_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *AddBannerToSlotRequest) GetBannerId() int32 {
+func (x *AddBannerToSlotRequest) GetBannerId() uint32 {
 	if x != nil {
 		return x.BannerId
 	}
 	return 0
 }
 
-func (x *AddBannerToSlotRequest) GetSlotId() int32 {
+func (x *AddBannerToSlotRequest) GetSlotId() uint32 {
 	if x != nil {
 		return x.SlotId
 	}
@@ -195,7 +296,7 @@ type AddBannerToSlotResponse struct {
 func (x *AddBannerToSlotResponse) Reset() {
 	*x = AddBannerToSlotResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rotator_proto_msgTypes[3]
+		mi := &file_rotator_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -208,7 +309,7 @@ func (x *AddBannerToSlotResponse) String() string {
 func (*AddBannerToSlotResponse) ProtoMessage() {}
 
 func (x *AddBannerToSlotResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_rotator_proto_msgTypes[3]
+	mi := &file_rotator_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -221,7 +322,7 @@ func (x *AddBannerToSlotResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddBannerToSlotResponse.ProtoReflect.Descriptor instead.
 func (*AddBannerToSlotResponse) Descriptor() ([]byte, []int) {
-	return file_rotator_proto_rawDescGZIP(), []int{3}
+	return file_rotator_proto_rawDescGZIP(), []int{5}
 }
 
 type RemoveBannerFromSlotRequest struct {
@@ -229,14 +330,14 @@ type RemoveBannerFromSlotRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	BannerId int32 `protobuf:"varint,1,opt,name=banner_id,json=bannerId,proto3" json:"banner_id,omitempty"`
-	SlotId   int32 `protobuf:"varint,2,opt,name=slot_id,json=slotId,proto3" json:"slot_id,omitempty"`
+	BannerId uint32 `protobuf:"varint,1,opt,name=banner_id,json=bannerId,proto3" json:"banner_id,omitempty"`
+	SlotId   uint32 `protobuf:"varint,2,opt,name=slot_id,json=slotId,proto3" json:"slot_id,omitempty"`
 }
 
 func (x *RemoveBannerFromSlotRequest) Reset() {
 	*x = RemoveBannerFromSlotRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rotator_proto_msgTypes[4]
+		mi := &file_rotator_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -249,7 +350,7 @@ func (x *RemoveBannerFromSlotRequest) String() string {
 func (*RemoveBannerFromSlotRequest) ProtoMessage() {}
 
 func (x *RemoveBannerFromSlotRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_rotator_proto_msgTypes[4]
+	mi := &file_rotator_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -262,17 +363,17 @@ func (x *RemoveBannerFromSlotRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveBannerFromSlotRequest.ProtoReflect.Descriptor instead.
 func (*RemoveBannerFromSlotRequest) Descriptor() ([]byte, []int) {
-	return file_rotator_proto_rawDescGZIP(), []int{4}
+	return file_rotator_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *RemoveBannerFromSlotRequest) GetBannerId() int32 {
+func (x *RemoveBannerFromSlotRequest) GetBannerId() uint32 {
 	if x != nil {
 		return x.BannerId
 	}
 	return 0
 }
 
-func (x *RemoveBannerFromSlotRequest) GetSlotId() int32 {
+func (x *RemoveBannerFromSlotRequest) GetSlotId() uint32 {
 	if x != nil {
 		return x.SlotId
 	}
@@ -288,7 +389,7 @@ type RemoveBannerFromSlotResponse struct {
 func (x *RemoveBannerFromSlotResponse) Reset() {
 	*x = RemoveBannerFromSlotResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rotator_proto_msgTypes[5]
+		mi := &file_rotator_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -301,7 +402,7 @@ func (x *RemoveBannerFromSlotResponse) String() string {
 func (*RemoveBannerFromSlotResponse) ProtoMessage() {}
 
 func (x *RemoveBannerFromSlotResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_rotator_proto_msgTypes[5]
+	mi := &file_rotator_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -314,7 +415,7 @@ func (x *RemoveBannerFromSlotResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveBannerFromSlotResponse.ProtoReflect.Descriptor instead.
 func (*RemoveBannerFromSlotResponse) Descriptor() ([]byte, []int) {
-	return file_rotator_proto_rawDescGZIP(), []int{5}
+	return file_rotator_proto_rawDescGZIP(), []int{7}
 }
 
 type AddBanner struct {
@@ -328,7 +429,7 @@ type AddBanner struct {
 func (x *AddBanner) Reset() {
 	*x = AddBanner{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rotator_proto_msgTypes[6]
+		mi := &file_rotator_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -341,7 +442,7 @@ func (x *AddBanner) String() string {
 func (*AddBanner) ProtoMessage() {}
 
 func (x *AddBanner) ProtoReflect() protoreflect.Message {
-	mi := &file_rotator_proto_msgTypes[6]
+	mi := &file_rotator_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -354,7 +455,7 @@ func (x *AddBanner) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddBanner.ProtoReflect.Descriptor instead.
 func (*AddBanner) Descriptor() ([]byte, []int) {
-	return file_rotator_proto_rawDescGZIP(), []int{6}
+	return file_rotator_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *AddBanner) GetDescription() string {
@@ -375,7 +476,7 @@ type AddSlot struct {
 func (x *AddSlot) Reset() {
 	*x = AddSlot{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rotator_proto_msgTypes[7]
+		mi := &file_rotator_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -388,7 +489,7 @@ func (x *AddSlot) String() string {
 func (*AddSlot) ProtoMessage() {}
 
 func (x *AddSlot) ProtoReflect() protoreflect.Message {
-	mi := &file_rotator_proto_msgTypes[7]
+	mi := &file_rotator_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -401,7 +502,7 @@ func (x *AddSlot) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddSlot.ProtoReflect.Descriptor instead.
 func (*AddSlot) Descriptor() ([]byte, []int) {
-	return file_rotator_proto_rawDescGZIP(), []int{7}
+	return file_rotator_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *AddSlot) GetDescription() string {
@@ -423,7 +524,7 @@ type AddSdg struct {
 func (x *AddSdg) Reset() {
 	*x = AddSdg{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rotator_proto_msgTypes[8]
+		mi := &file_rotator_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -436,7 +537,7 @@ func (x *AddSdg) String() string {
 func (*AddSdg) ProtoMessage() {}
 
 func (x *AddSdg) ProtoReflect() protoreflect.Message {
-	mi := &file_rotator_proto_msgTypes[8]
+	mi := &file_rotator_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -449,7 +550,7 @@ func (x *AddSdg) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddSdg.ProtoReflect.Descriptor instead.
 func (*AddSdg) Descriptor() ([]byte, []int) {
-	return file_rotator_proto_rawDescGZIP(), []int{8}
+	return file_rotator_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *AddSdg) GetDescription() string {
@@ -463,58 +564,70 @@ var File_rotator_proto protoreflect.FileDescriptor
 
 var file_rotator_proto_rawDesc = []byte{
 	0x0a, 0x0d, 0x72, 0x6f, 0x74, 0x61, 0x74, 0x6f, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12,
-	0x07, 0x72, 0x6f, 0x74, 0x61, 0x74, 0x6f, 0x72, 0x22, 0x45, 0x0a, 0x13, 0x53, 0x65, 0x6c, 0x65,
-	0x63, 0x74, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
-	0x17, 0x0a, 0x07, 0x73, 0x6c, 0x6f, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05,
-	0x52, 0x06, 0x73, 0x6c, 0x6f, 0x74, 0x49, 0x64, 0x12, 0x15, 0x0a, 0x06, 0x73, 0x64, 0x67, 0x5f,
-	0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x73, 0x64, 0x67, 0x49, 0x64, 0x22,
-	0x33, 0x0a, 0x14, 0x53, 0x65, 0x6c, 0x65, 0x63, 0x74, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x62, 0x61, 0x6e, 0x6e, 0x65,
-	0x72, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x62, 0x61, 0x6e, 0x6e,
-	0x65, 0x72, 0x49, 0x64, 0x22, 0x4e, 0x0a, 0x16, 0x41, 0x64, 0x64, 0x42, 0x61, 0x6e, 0x6e, 0x65,
-	0x72, 0x54, 0x6f, 0x53, 0x6c, 0x6f, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1b,
-	0x0a, 0x09, 0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x05, 0x52, 0x08, 0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x49, 0x64, 0x12, 0x17, 0x0a, 0x07, 0x73,
-	0x6c, 0x6f, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x73, 0x6c,
-	0x6f, 0x74, 0x49, 0x64, 0x22, 0x19, 0x0a, 0x17, 0x41, 0x64, 0x64, 0x42, 0x61, 0x6e, 0x6e, 0x65,
-	0x72, 0x54, 0x6f, 0x53, 0x6c, 0x6f, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
-	0x53, 0x0a, 0x1b, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x46,
-	0x72, 0x6f, 0x6d, 0x53, 0x6c, 0x6f, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1b,
-	0x0a, 0x09, 0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x05, 0x52, 0x08, 0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x49, 0x64, 0x12, 0x17, 0x0a, 0x07, 0x73,
-	0x6c, 0x6f, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x73, 0x6c,
-	0x6f, 0x74, 0x49, 0x64, 0x22, 0x1e, 0x0a, 0x1c, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x42, 0x61,
-	0x6e, 0x6e, 0x65, 0x72, 0x46, 0x72, 0x6f, 0x6d, 0x53, 0x6c, 0x6f, 0x74, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x2d, 0x0a, 0x09, 0x41, 0x64, 0x64, 0x42, 0x61, 0x6e, 0x6e, 0x65,
-	0x72, 0x12, 0x20, 0x0a, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e,
-	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74,
-	0x69, 0x6f, 0x6e, 0x22, 0x2b, 0x0a, 0x07, 0x41, 0x64, 0x64, 0x53, 0x6c, 0x6f, 0x74, 0x12, 0x20,
-	0x0a, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e,
-	0x22, 0x2a, 0x0a, 0x06, 0x41, 0x64, 0x64, 0x53, 0x64, 0x67, 0x12, 0x20, 0x0a, 0x0b, 0x64, 0x65,
-	0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x32, 0x91, 0x02, 0x0a,
-	0x07, 0x52, 0x6f, 0x74, 0x61, 0x74, 0x6f, 0x72, 0x12, 0x4b, 0x0a, 0x0c, 0x53, 0x65, 0x6c, 0x65,
-	0x63, 0x74, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x12, 0x1c, 0x2e, 0x72, 0x6f, 0x74, 0x61, 0x74,
-	0x6f, 0x72, 0x2e, 0x53, 0x65, 0x6c, 0x65, 0x63, 0x74, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x72, 0x6f, 0x74, 0x61, 0x74, 0x6f, 0x72,
-	0x2e, 0x53, 0x65, 0x6c, 0x65, 0x63, 0x74, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x54, 0x0a, 0x0f, 0x41, 0x64, 0x64, 0x42, 0x61, 0x6e, 0x6e,
-	0x65, 0x72, 0x54, 0x6f, 0x53, 0x6c, 0x6f, 0x74, 0x12, 0x1f, 0x2e, 0x72, 0x6f, 0x74, 0x61, 0x74,
-	0x6f, 0x72, 0x2e, 0x41, 0x64, 0x64, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x54, 0x6f, 0x53, 0x6c,
-	0x6f, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x72, 0x6f, 0x74, 0x61,
-	0x74, 0x6f, 0x72, 0x2e, 0x41, 0x64, 0x64, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x54, 0x6f, 0x53,
-	0x6c, 0x6f, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x63, 0x0a, 0x14, 0x52,
-	0x65, 0x6d, 0x6f, 0x76, 0x65, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x46, 0x72, 0x6f, 0x6d, 0x53,
-	0x6c, 0x6f, 0x74, 0x12, 0x24, 0x2e, 0x72, 0x6f, 0x74, 0x61, 0x74, 0x6f, 0x72, 0x2e, 0x52, 0x65,
+	0x07, 0x72, 0x6f, 0x74, 0x61, 0x74, 0x6f, 0x72, 0x22, 0x5f, 0x0a, 0x10, 0x48, 0x69, 0x74, 0x42,
+	0x61, 0x6e, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1b, 0x0a, 0x09,
+	0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d, 0x52,
+	0x08, 0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x49, 0x64, 0x12, 0x17, 0x0a, 0x07, 0x73, 0x6c, 0x6f,
+	0x74, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x06, 0x73, 0x6c, 0x6f, 0x74,
+	0x49, 0x64, 0x12, 0x15, 0x0a, 0x06, 0x73, 0x64, 0x67, 0x5f, 0x69, 0x64, 0x18, 0x03, 0x20, 0x01,
+	0x28, 0x0d, 0x52, 0x05, 0x73, 0x64, 0x67, 0x49, 0x64, 0x22, 0x13, 0x0a, 0x11, 0x48, 0x69, 0x74,
+	0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x45,
+	0x0a, 0x13, 0x53, 0x65, 0x6c, 0x65, 0x63, 0x74, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x17, 0x0a, 0x07, 0x73, 0x6c, 0x6f, 0x74, 0x5f, 0x69, 0x64,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x06, 0x73, 0x6c, 0x6f, 0x74, 0x49, 0x64, 0x12, 0x15,
+	0x0a, 0x06, 0x73, 0x64, 0x67, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x05,
+	0x73, 0x64, 0x67, 0x49, 0x64, 0x22, 0x33, 0x0a, 0x14, 0x53, 0x65, 0x6c, 0x65, 0x63, 0x74, 0x42,
+	0x61, 0x6e, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1b, 0x0a,
+	0x09, 0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d,
+	0x52, 0x08, 0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x49, 0x64, 0x22, 0x4e, 0x0a, 0x16, 0x41, 0x64,
+	0x64, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x54, 0x6f, 0x53, 0x6c, 0x6f, 0x74, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x12, 0x1b, 0x0a, 0x09, 0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x5f, 0x69,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x08, 0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x49,
+	0x64, 0x12, 0x17, 0x0a, 0x07, 0x73, 0x6c, 0x6f, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x0d, 0x52, 0x06, 0x73, 0x6c, 0x6f, 0x74, 0x49, 0x64, 0x22, 0x19, 0x0a, 0x17, 0x41, 0x64,
+	0x64, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x54, 0x6f, 0x53, 0x6c, 0x6f, 0x74, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x53, 0x0a, 0x1b, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x42,
+	0x61, 0x6e, 0x6e, 0x65, 0x72, 0x46, 0x72, 0x6f, 0x6d, 0x53, 0x6c, 0x6f, 0x74, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x12, 0x1b, 0x0a, 0x09, 0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x5f, 0x69,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x08, 0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x49,
+	0x64, 0x12, 0x17, 0x0a, 0x07, 0x73, 0x6c, 0x6f, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x0d, 0x52, 0x06, 0x73, 0x6c, 0x6f, 0x74, 0x49, 0x64, 0x22, 0x1e, 0x0a, 0x1c, 0x52, 0x65,
 	0x6d, 0x6f, 0x76, 0x65, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x46, 0x72, 0x6f, 0x6d, 0x53, 0x6c,
-	0x6f, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x25, 0x2e, 0x72, 0x6f, 0x74, 0x61,
-	0x74, 0x6f, 0x72, 0x2e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72,
-	0x46, 0x72, 0x6f, 0x6d, 0x53, 0x6c, 0x6f, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x42, 0x30, 0x5a, 0x2e, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61,
-	0x6c, 0x69, 0x6b, 0x68, 0x61, 0x6e, 0x7a, 0x2f, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2d, 0x6f,
-	0x74, 0x75, 0x73, 0x2d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x2f, 0x70, 0x6b, 0x67, 0x2f,
-	0x70, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6f, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x2d, 0x0a, 0x09, 0x41, 0x64,
+	0x64, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x12, 0x20, 0x0a, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72,
+	0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65,
+	0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x2b, 0x0a, 0x07, 0x41, 0x64, 0x64,
+	0x53, 0x6c, 0x6f, 0x74, 0x12, 0x20, 0x0a, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74,
+	0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72,
+	0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x2a, 0x0a, 0x06, 0x41, 0x64, 0x64, 0x53, 0x64, 0x67,
+	0x12, 0x20, 0x0a, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69,
+	0x6f, 0x6e, 0x32, 0xd5, 0x02, 0x0a, 0x07, 0x52, 0x6f, 0x74, 0x61, 0x74, 0x6f, 0x72, 0x12, 0x42,
+	0x0a, 0x09, 0x48, 0x69, 0x74, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x12, 0x19, 0x2e, 0x72, 0x6f,
+	0x74, 0x61, 0x74, 0x6f, 0x72, 0x2e, 0x48, 0x69, 0x74, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1a, 0x2e, 0x72, 0x6f, 0x74, 0x61, 0x74, 0x6f, 0x72,
+	0x2e, 0x48, 0x69, 0x74, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x12, 0x4b, 0x0a, 0x0c, 0x53, 0x65, 0x6c, 0x65, 0x63, 0x74, 0x42, 0x61, 0x6e, 0x6e,
+	0x65, 0x72, 0x12, 0x1c, 0x2e, 0x72, 0x6f, 0x74, 0x61, 0x74, 0x6f, 0x72, 0x2e, 0x53, 0x65, 0x6c,
+	0x65, 0x63, 0x74, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x1d, 0x2e, 0x72, 0x6f, 0x74, 0x61, 0x74, 0x6f, 0x72, 0x2e, 0x53, 0x65, 0x6c, 0x65, 0x63,
+	0x74, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
+	0x54, 0x0a, 0x0f, 0x41, 0x64, 0x64, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x54, 0x6f, 0x53, 0x6c,
+	0x6f, 0x74, 0x12, 0x1f, 0x2e, 0x72, 0x6f, 0x74, 0x61, 0x74, 0x6f, 0x72, 0x2e, 0x41, 0x64, 0x64,
+	0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x54, 0x6f, 0x53, 0x6c, 0x6f, 0x74, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x72, 0x6f, 0x74, 0x61, 0x74, 0x6f, 0x72, 0x2e, 0x41, 0x64,
+	0x64, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x54, 0x6f, 0x53, 0x6c, 0x6f, 0x74, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x63, 0x0a, 0x14, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x42,
+	0x61, 0x6e, 0x6e, 0x65, 0x72, 0x46, 0x72, 0x6f, 0x6d, 0x53, 0x6c, 0x6f, 0x74, 0x12, 0x24, 0x2e,
+	0x72, 0x6f, 0x74, 0x61, 0x74, 0x6f, 0x72, 0x2e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x42, 0x61,
+	0x6e, 0x6e, 0x65, 0x72, 0x46, 0x72, 0x6f, 0x6d, 0x53, 0x6c, 0x6f, 0x74, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x25, 0x2e, 0x72, 0x6f, 0x74, 0x61, 0x74, 0x6f, 0x72, 0x2e, 0x52, 0x65,
+	0x6d, 0x6f, 0x76, 0x65, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x46, 0x72, 0x6f, 0x6d, 0x53, 0x6c,
+	0x6f, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x30, 0x5a, 0x2e, 0x67, 0x69,
+	0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x6c, 0x69, 0x6b, 0x68, 0x61, 0x6e,
+	0x7a, 0x2f, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2d, 0x6f, 0x74, 0x75, 0x73, 0x2d, 0x70, 0x72,
+	0x6f, 0x6a, 0x65, 0x63, 0x74, 0x2f, 0x70, 0x6b, 0x67, 0x2f, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -529,27 +642,31 @@ func file_rotator_proto_rawDescGZIP() []byte {
 	return file_rotator_proto_rawDescData
 }
 
-var file_rotator_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_rotator_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_rotator_proto_goTypes = []interface{}{
-	(*SelectBannerRequest)(nil),          // 0: rotator.SelectBannerRequest
-	(*SelectBannerResponse)(nil),         // 1: rotator.SelectBannerResponse
-	(*AddBannerToSlotRequest)(nil),       // 2: rotator.AddBannerToSlotRequest
-	(*AddBannerToSlotResponse)(nil),      // 3: rotator.AddBannerToSlotResponse
-	(*RemoveBannerFromSlotRequest)(nil),  // 4: rotator.RemoveBannerFromSlotRequest
-	(*RemoveBannerFromSlotResponse)(nil), // 5: rotator.RemoveBannerFromSlotResponse
-	(*AddBanner)(nil),                    // 6: rotator.AddBanner
-	(*AddSlot)(nil),                      // 7: rotator.AddSlot
-	(*AddSdg)(nil),                       // 8: rotator.AddSdg
+	(*HitBannerRequest)(nil),             // 0: rotator.HitBannerRequest
+	(*HitBannerResponse)(nil),            // 1: rotator.HitBannerResponse
+	(*SelectBannerRequest)(nil),          // 2: rotator.SelectBannerRequest
+	(*SelectBannerResponse)(nil),         // 3: rotator.SelectBannerResponse
+	(*AddBannerToSlotRequest)(nil),       // 4: rotator.AddBannerToSlotRequest
+	(*AddBannerToSlotResponse)(nil),      // 5: rotator.AddBannerToSlotResponse
+	(*RemoveBannerFromSlotRequest)(nil),  // 6: rotator.RemoveBannerFromSlotRequest
+	(*RemoveBannerFromSlotResponse)(nil), // 7: rotator.RemoveBannerFromSlotResponse
+	(*AddBanner)(nil),                    // 8: rotator.AddBanner
+	(*AddSlot)(nil),                      // 9: rotator.AddSlot
+	(*AddSdg)(nil),                       // 10: rotator.AddSdg
 }
 var file_rotator_proto_depIdxs = []int32{
-	0, // 0: rotator.Rotator.SelectBanner:input_type -> rotator.SelectBannerRequest
-	2, // 1: rotator.Rotator.AddBannerToSlot:input_type -> rotator.AddBannerToSlotRequest
-	4, // 2: rotator.Rotator.RemoveBannerFromSlot:input_type -> rotator.RemoveBannerFromSlotRequest
-	1, // 3: rotator.Rotator.SelectBanner:output_type -> rotator.SelectBannerResponse
-	3, // 4: rotator.Rotator.AddBannerToSlot:output_type -> rotator.AddBannerToSlotResponse
-	5, // 5: rotator.Rotator.RemoveBannerFromSlot:output_type -> rotator.RemoveBannerFromSlotResponse
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
+	0, // 0: rotator.Rotator.HitBanner:input_type -> rotator.HitBannerRequest
+	2, // 1: rotator.Rotator.SelectBanner:input_type -> rotator.SelectBannerRequest
+	4, // 2: rotator.Rotator.AddBannerToSlot:input_type -> rotator.AddBannerToSlotRequest
+	6, // 3: rotator.Rotator.RemoveBannerFromSlot:input_type -> rotator.RemoveBannerFromSlotRequest
+	1, // 4: rotator.Rotator.HitBanner:output_type -> rotator.HitBannerResponse
+	3, // 5: rotator.Rotator.SelectBanner:output_type -> rotator.SelectBannerResponse
+	5, // 6: rotator.Rotator.AddBannerToSlot:output_type -> rotator.AddBannerToSlotResponse
+	7, // 7: rotator.Rotator.RemoveBannerFromSlot:output_type -> rotator.RemoveBannerFromSlotResponse
+	4, // [4:8] is the sub-list for method output_type
+	0, // [0:4] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -562,7 +679,7 @@ func file_rotator_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_rotator_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SelectBannerRequest); i {
+			switch v := v.(*HitBannerRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -574,7 +691,7 @@ func file_rotator_proto_init() {
 			}
 		}
 		file_rotator_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SelectBannerResponse); i {
+			switch v := v.(*HitBannerResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -586,7 +703,7 @@ func file_rotator_proto_init() {
 			}
 		}
 		file_rotator_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddBannerToSlotRequest); i {
+			switch v := v.(*SelectBannerRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -598,7 +715,7 @@ func file_rotator_proto_init() {
 			}
 		}
 		file_rotator_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddBannerToSlotResponse); i {
+			switch v := v.(*SelectBannerResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -610,7 +727,7 @@ func file_rotator_proto_init() {
 			}
 		}
 		file_rotator_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RemoveBannerFromSlotRequest); i {
+			switch v := v.(*AddBannerToSlotRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -622,7 +739,7 @@ func file_rotator_proto_init() {
 			}
 		}
 		file_rotator_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RemoveBannerFromSlotResponse); i {
+			switch v := v.(*AddBannerToSlotResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -634,7 +751,7 @@ func file_rotator_proto_init() {
 			}
 		}
 		file_rotator_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddBanner); i {
+			switch v := v.(*RemoveBannerFromSlotRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -646,7 +763,7 @@ func file_rotator_proto_init() {
 			}
 		}
 		file_rotator_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddSlot); i {
+			switch v := v.(*RemoveBannerFromSlotResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -658,6 +775,30 @@ func file_rotator_proto_init() {
 			}
 		}
 		file_rotator_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*AddBanner); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_rotator_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*AddSlot); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_rotator_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*AddSdg); i {
 			case 0:
 				return &v.state
@@ -676,7 +817,7 @@ func file_rotator_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_rotator_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -702,6 +843,7 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type RotatorClient interface {
+	HitBanner(ctx context.Context, in *HitBannerRequest, opts ...grpc.CallOption) (*HitBannerResponse, error)
 	SelectBanner(ctx context.Context, in *SelectBannerRequest, opts ...grpc.CallOption) (*SelectBannerResponse, error)
 	AddBannerToSlot(ctx context.Context, in *AddBannerToSlotRequest, opts ...grpc.CallOption) (*AddBannerToSlotResponse, error)
 	RemoveBannerFromSlot(ctx context.Context, in *RemoveBannerFromSlotRequest, opts ...grpc.CallOption) (*RemoveBannerFromSlotResponse, error)
@@ -713,6 +855,15 @@ type rotatorClient struct {
 
 func NewRotatorClient(cc grpc.ClientConnInterface) RotatorClient {
 	return &rotatorClient{cc}
+}
+
+func (c *rotatorClient) HitBanner(ctx context.Context, in *HitBannerRequest, opts ...grpc.CallOption) (*HitBannerResponse, error) {
+	out := new(HitBannerResponse)
+	err := c.cc.Invoke(ctx, "/rotator.Rotator/HitBanner", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *rotatorClient) SelectBanner(ctx context.Context, in *SelectBannerRequest, opts ...grpc.CallOption) (*SelectBannerResponse, error) {
@@ -744,6 +895,7 @@ func (c *rotatorClient) RemoveBannerFromSlot(ctx context.Context, in *RemoveBann
 
 // RotatorServer is the server API for Rotator service.
 type RotatorServer interface {
+	HitBanner(context.Context, *HitBannerRequest) (*HitBannerResponse, error)
 	SelectBanner(context.Context, *SelectBannerRequest) (*SelectBannerResponse, error)
 	AddBannerToSlot(context.Context, *AddBannerToSlotRequest) (*AddBannerToSlotResponse, error)
 	RemoveBannerFromSlot(context.Context, *RemoveBannerFromSlotRequest) (*RemoveBannerFromSlotResponse, error)
@@ -753,6 +905,9 @@ type RotatorServer interface {
 type UnimplementedRotatorServer struct {
 }
 
+func (*UnimplementedRotatorServer) HitBanner(context.Context, *HitBannerRequest) (*HitBannerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method HitBanner not implemented")
+}
 func (*UnimplementedRotatorServer) SelectBanner(context.Context, *SelectBannerRequest) (*SelectBannerResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SelectBanner not implemented")
 }
@@ -765,6 +920,24 @@ func (*UnimplementedRotatorServer) RemoveBannerFromSlot(context.Context, *Remove
 
 func RegisterRotatorServer(s *grpc.Server, srv RotatorServer) {
 	s.RegisterService(&_Rotator_serviceDesc, srv)
+}
+
+func _Rotator_HitBanner_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HitBannerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RotatorServer).HitBanner(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/rotator.Rotator/HitBanner",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RotatorServer).HitBanner(ctx, req.(*HitBannerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _Rotator_SelectBanner_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -825,6 +998,10 @@ var _Rotator_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "rotator.Rotator",
 	HandlerType: (*RotatorServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "HitBanner",
+			Handler:    _Rotator_HitBanner_Handler,
+		},
 		{
 			MethodName: "SelectBanner",
 			Handler:    _Rotator_SelectBanner_Handler,

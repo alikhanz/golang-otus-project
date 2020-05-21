@@ -1,5 +1,7 @@
-test:
-	go test ./... -v -race -count 100
+unit-test:
+	go test ./... -v -race -count 100 -tags=unit
+integration-test:
+	go test ./... -v -race -tags=integration
 run-go:
 	go run cmd/main.go
 .PHONY: build
@@ -12,6 +14,8 @@ generate:
 install:
 	go install
 run-prod:
-	docker-compose -f deployments/docker-compose.yml up --build
+	docker-compose -f deployments/docker-compose.yml up
 run-dev:
 	docker-compose -f deployments/docker-compose.yml -f deployments/docker-compose.dev.yml up --build
+run-integration-test:
+	docker-compose -f deployments/docker-compose.yml -f deployments/docker-compose.test.yml up --build

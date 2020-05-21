@@ -2,38 +2,88 @@ package rotator
 
 import (
 	"context"
+	"errors"
 
-	"github.com/alikhanz/golang-otus-project/internal/resources"
+	//"errors"
+
 	"github.com/alikhanz/golang-otus-project/pkg/pb"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
-type RotatorServer struct {
+type Server struct {
 	validator *Validator
-	res *resources.Resources
+	rotator *Rotator
 }
 
-func NewRotatorServer(res *resources.Resources) *RotatorServer {
-	v := NewValidator()
-	return &RotatorServer{validator: v, res: res}
+func NewRotatorServer(rotator *Rotator) *Server {
+	v := NewValidator(rotator)
+	return &Server{validator: v, rotator: rotator}
 }
 
-func (r RotatorServer) SelectBanner(
+func (r Server) HitBanner(ctx context.Context, request *pb.HitBannerRequest) (*pb.HitBannerResponse, error) {
+	err := r.rotator.HitBanner(uint(request.BannerId), uint(request.SlotId), uint(request.SdgId))
+	err = r.handleErr(err)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &pb.HitBannerResponse{}, nil
+}
+
+func (r Server) SelectBanner(
 	ctx context.Context,
 	request *pb.SelectBannerRequest,
 ) (*pb.SelectBannerResponse, error) {
-	panic("implement me")
+	banner, err := r.rotator.SelectBanner(uint(request.SlotId), uint(request.SdgId))
+	err = r.handleErr(err)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &pb.SelectBannerResponse{BannerId: uint32(banner.ID)}, nil
 }
 
-func (r RotatorServer) AddBannerToSlot(
+func (r Server) AddBannerToSlot(
 	ctx context.Context,
 	request *pb.AddBannerToSlotRequest,
 ) (*pb.AddBannerToSlotResponse, error) {
-	panic("implement me")
+	err := r.rotator.AddBannerToSlot(uint(request.BannerId), uint(request.BannerId))
+	err = r.handleErr(err)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &pb.AddBannerToSlotResponse{}, nil
 }
 
-func (r RotatorServer) RemoveBannerFromSlot(
+func (r Server) RemoveBannerFromSlot(
 	ctx context.Context,
 	request *pb.RemoveBannerFromSlotRequest,
 ) (*pb.RemoveBannerFromSlotResponse, error) {
-	panic("implement me")
+	err := r.rotator.RemoveBannerFromSlot(uint(request.BannerId), uint(request.BannerId))
+	err = r.handleErr(err)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &pb.RemoveBannerFromSlotResponse{}, nil
+}
+
+func (r Server) handleErr(err error) error {
+	var errNotFound *NotFoundError
+
+	if err == nil {
+		return nil
+	}
+
+	if errors.As(err, &errNotFound) {
+		return status.Error(codes.InvalidArgument, err.Error())
+	}
+
+	return status.Error(codes.Internal, err.Error())
 }

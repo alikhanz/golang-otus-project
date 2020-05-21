@@ -1,9 +1,15 @@
 # Сервис "Ротация баннеров"
 
-Запуск тестов:
+Запуск unit-тестов:
 
 ```shell script
-make test
+make unit-test
+```
+
+Запуск интеграционных тестов:
+
+```shell script
+make integration-test
 ```
 
 Сборка приложения:
@@ -56,7 +62,7 @@ https://habr.com/ru/company/surfingbird/blog/168611/
 Кроме того пользователи неоднородны - их можно условно разделить на социально-демографические группы. 
 В разных группах пользователей могут быть разные предпочтения.
 
-<img src="./examples/banners-rotation/conceptual_model.png" width="800">
+<img src="https://github.com/OtusGolang/final_project/blob/master/examples/banners-rotation/conceptual_model.png?raw=true" width="800">
 
 ## Архитектура
 Сервис состоит из API и базы данных в которой хранится информация о баннерах.

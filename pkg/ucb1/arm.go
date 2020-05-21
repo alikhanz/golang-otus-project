@@ -1,7 +1,7 @@
 package ucb1
 
 type Arm struct {
-	Count int64  // количество "дерганий за ручку"
+	Count  int64   // количество "дерганий за ручку"
 	Reward float64 // положительное подкрепление
 }
 
